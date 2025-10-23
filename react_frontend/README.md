@@ -1,82 +1,57 @@
-# Lightweight React Template for KAVIA
+# Ocean Weather - React Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A lightweight, modern weather app that lets you search for a city and view the current conditions and a 5-day forecast. Built with React and styled using the Ocean Professional theme (blues, subtle gradients, rounded cards, soft shadows).
 
 ## Features
+- Search by city with explicit submit button
+- Current conditions: temperature, icon, description, humidity, wind
+- 5-day forecast summary (from 3-hour data): highs/lows and daily icon
+- Ocean Professional theme with accessible, responsive layout
+- Graceful loading and error states
+- Environment variable support for OpenWeatherMap API key
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+## Quick Start
 
-## Getting Started
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+1) Install dependencies
+```bash
+npm install
 ```
 
-### Components
+2) Create your `.env` from the example:
+```bash
+cp .env.example .env
+# Then edit .env and set REACT_APP_OPENWEATHER_API_KEY
+```
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+3) Run the app
+```bash
+npm start
+```
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+Open http://localhost:3000 to view it in your browser.
 
-## Learn More
+## Environment
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- REACT_APP_OPENWEATHER_API_KEY: Your OpenWeatherMap API key.
 
-### Code Splitting
+These environment variables must be prefixed with `REACT_APP_` to be exposed to the front-end.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Project Structure
 
-### Analyzing the Bundle Size
+- src/components/SearchBar.jsx: Input and submit
+- src/components/CurrentWeatherCard.jsx: Current conditions
+- src/components/ForecastList.jsx and ForecastCard.jsx: Forecast summary
+- src/services/weatherApi.js: Fetch helpers for current/forecast
+- src/utils/format.js: Utility functions (Kelvin->Celsius, icons, date labels)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Notes
 
-### Making a Progressive Web App
+- The app uses the OpenWeatherMap Current Weather and 5-Day/3-Hour Forecast APIs.
+- If you see a "Missing API key" error, ensure your `.env` has `REACT_APP_OPENWEATHER_API_KEY` and restart the dev server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Accessibility and Responsiveness
+- Form controls have labels or ARIA attributes.
+- Layout adapts from single-column to a 5-card grid for forecasts on larger screens.
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+MIT
